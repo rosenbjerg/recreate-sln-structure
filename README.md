@@ -1,4 +1,4 @@
-# A dotnet tool for moving project files into the directories specified by the solutino (.sln) file
+# A dotnet tool for moving project files into the directories specified by the solution (.sln) file
 
 Useful for optimizing cache reuse in containerized .NET builds
 
