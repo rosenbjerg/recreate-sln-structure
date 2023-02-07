@@ -6,7 +6,7 @@ Useful for optimizing cache reuse in containerized .NET builds
 Description:
   Recreate solution directory tree, i.e. for use in building a containerized .NET application with cached restore layer
   Takes the path to a solution (.sln) file as input, and moves
-  Example: 'recreate-solution-directory-tree MySolution.sln'
+  Example: 'recreate-sln-structure MySolution.sln'
 
 Usage:
   recreate-sln-structure <path to sln> [options]
