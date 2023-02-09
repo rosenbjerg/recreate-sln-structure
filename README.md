@@ -5,6 +5,15 @@
 
 Useful for optimizing cache reuse in containerized .NET builds
 
+## Usage example
+
+```dockerfile
+COPY ["MySolution.sln", "**/*.csproj", "./"]
+RUN recreate-sln-structure MySolution.sln && dotnet restore MySolution.sln
+```
+
+## Help
+
 ```
 Description:
   Recreate solution directory tree, i.e. for use in building a containerized .NET application with cached restore layer
