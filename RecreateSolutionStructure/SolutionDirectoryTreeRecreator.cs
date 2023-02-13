@@ -4,7 +4,7 @@ namespace RecreateSolutionStructure;
 
 public class SolutionDirectoryTreeRecreator
 {
-    public static void Recreate(FileInfo solutionFile)
+    public static void Recreate(FileInfo solutionFile, bool ignoreMissingProjects)
     {
         var solution = SolutionFile.Parse(solutionFile.FullName);
         var solutionDirectory = solutionFile.Directory!.FullName;
@@ -31,9 +31,9 @@ public class SolutionDirectoryTreeRecreator
                 File.Move(currentPath, destinationPath);
                 Console.WriteLine($"{relativeCurrentPath} moved to {relativeDestinationPath}");
             }
-            else
+            else if (!ignoreMissingProjects)
             {
-                Console.Error.WriteLine($"Project file not found in same directory as solution file: {relativeCurrentPath}");
+                throw new FileNotFoundException(currentPath);
             }
         }
     }

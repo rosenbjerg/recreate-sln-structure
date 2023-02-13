@@ -11,7 +11,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <ToolCommandName>recreate-sln-structure</ToolCommandName>
         <PackageOutputPath>./nupkg</PackageOutputPath>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
 
         <NeutralLanguage>en</NeutralLanguage>
