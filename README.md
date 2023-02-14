@@ -27,6 +27,7 @@ Arguments:
   <path to sln>  File path to the solution (.sln) file
 
 Options:
-  --version       Show version information
-  -?, -h, --help  Show help and usage information
+  -i, --ignore-missing-projects  Ignore missing project files [default: False]
+  --version                      Show version information
+  -?, -h, --help                 Show help and usage information
 ```
