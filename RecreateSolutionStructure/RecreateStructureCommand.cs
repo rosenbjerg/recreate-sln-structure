@@ -13,6 +13,12 @@ public class RecreateStructureCommand : RootCommand
         
         var solutionFileArgument = new Argument<FileInfo>(name: "path to sln", description: "File path to the solution (.sln) file");
         AddArgument(solutionFileArgument);
-        this.SetHandler(SolutionDirectoryTreeRecreator.Recreate, solutionFileArgument);
+
+        var ignoreMissingProjectsOption = new Option<bool>("--ignore-missing-projects", "Ignore missing project files");
+        ignoreMissingProjectsOption.SetDefaultValue(false);
+        ignoreMissingProjectsOption.AddAlias("-i");
+        AddOption(ignoreMissingProjectsOption);
+        
+        this.SetHandler(SolutionDirectoryTreeRecreator.Recreate, solutionFileArgument, ignoreMissingProjectsOption);
     }
 }
