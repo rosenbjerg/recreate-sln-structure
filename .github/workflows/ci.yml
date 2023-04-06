@@ -23,6 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
+        sdk: [6.0.x, 7.0.x]
         
     steps:
     - name: Checkout
@@ -31,7 +32,7 @@ jobs:
     - name: Prepare .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.0.x'
+        dotnet-version: ${{ matrix.sdk }}
 
     - name: Test with dotnet
       run: dotnet test RecreateSolutionStructure.sln  --collect "XPlat Code Coverage" --logger GitHubActions
