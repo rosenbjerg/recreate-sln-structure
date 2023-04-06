@@ -37,7 +37,7 @@ jobs:
     - name: Test with dotnet
       run: dotnet test RecreateSolutionStructure.sln  --collect "XPlat Code Coverage" --logger GitHubActions
 
-    - if: matrix.os == 'ubuntu-latest'
+    - if: matrix.os == 'ubuntu-latest' && matrix.sdk == '7.0.x'
       name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       with:
