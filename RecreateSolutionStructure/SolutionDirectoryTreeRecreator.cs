@@ -18,7 +18,7 @@ public class SolutionDirectoryTreeRecreator
             var currentPath = Path.Combine(solutionDirectory, projectName);
 
             var relativeDestinationPath = Path.GetRelativePath(".", destinationPath);
-            var relativeCurrentPath = Path.GetRelativePath(".", destinationPath);
+            var relativeCurrentPath = Path.GetRelativePath(".", currentPath);
 
             if (File.Exists(destinationPath))
             {
