@@ -1,5 +1,6 @@
 ﻿using System.CommandLine;
 using RecreateSolutionStructure;
 
-var recreateStructureCommand = new RecreateStructureCommand();
-return await recreateStructureCommand.InvokeAsync(args);
+var rootCommand = new RecreateStructureCommand();
+var parsed = rootCommand.Parse(args);
+return await parsed.InvokeAsync();

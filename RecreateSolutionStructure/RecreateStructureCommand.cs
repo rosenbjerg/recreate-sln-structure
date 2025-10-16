@@ -6,19 +6,26 @@ public class RecreateStructureCommand : RootCommand
 {
     public RecreateStructureCommand()
     {
-        base.Name = "recreate-sln-structure";
-        base.Description = "Recreate solution directory tree, i.e. for use in building a containerized .NET application with cached restore layer\n" +
-                           "Takes the path to a solution (.sln) file as input, and moves\n" +
-                           "Example: 'recreate-sln-structure MySolution.sln'";
+        Description = "Recreate solution directory tree, i.e. for use in building a containerized .NET application with cached restore layer\n" +
+                      "Takes the path to a solution (.sln) file as input, and moves\n" +
+                      "Example: 'recreate-sln-structure MySolution.sln'";
         
-        var solutionFileArgument = new Argument<FileInfo>(name: "path to sln", description: "File path to the solution (.sln) file");
-        AddArgument(solutionFileArgument);
+        var solutionFileArgument = new Argument<FileInfo>("path to sln")
+        {
+            Description = "File path to the solution (.sln) file",
+            Arity = ArgumentArity.ExactlyOne
+        };
+        
+        var ignoreMissingProjectsOption = new Option<bool>("--ignore-missing-projects", "-i")
+        {
+            Description = "Ignore missing project files",
+            DefaultValueFactory = _ => false,
+            Arity = ArgumentArity.ZeroOrOne
+        };
 
-        var ignoreMissingProjectsOption = new Option<bool>("--ignore-missing-projects", "Ignore missing project files");
-        ignoreMissingProjectsOption.SetDefaultValue(false);
-        ignoreMissingProjectsOption.AddAlias("-i");
-        AddOption(ignoreMissingProjectsOption);
+        Add(solutionFileArgument);
+        Add(ignoreMissingProjectsOption);
         
-        this.SetHandler(SolutionDirectoryTreeRecreator.Recreate, solutionFileArgument, ignoreMissingProjectsOption);
+        SetAction(result => SolutionDirectoryTreeRecreator.Recreate(result.GetRequiredValue(solutionFileArgument), result.GetValue(ignoreMissingProjectsOption)));
     }
 }

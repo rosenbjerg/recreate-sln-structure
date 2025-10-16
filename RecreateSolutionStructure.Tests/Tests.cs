@@ -16,7 +16,8 @@ public class Tests
         var slnPath = copy.GetFilePath("RecreateSolutionStructure.sln");
         var command = new RecreateStructureCommand();
         
-        var exitCode = await command.InvokeAsync(slnPath);
+        var parsed = command.Parse(slnPath);
+        var exitCode = await parsed.InvokeAsync();
         
         Assert.That(exitCode, Is.Zero);
     }
@@ -28,7 +29,8 @@ public class Tests
         var slnPath = copy.GetFilePath("RecreateSolutionStructure.sln");
         var command = new RecreateStructureCommand();
         
-        var exitCode = await command.InvokeAsync(slnPath);
+        var parsed = command.Parse(slnPath);
+        var exitCode = await parsed.InvokeAsync();
         
         Assert.That(exitCode, Is.Not.Zero);
     }
@@ -40,7 +42,8 @@ public class Tests
         var slnPath = copy.GetFilePath("RecreateSolutionStructure.sln --ignore-missing-projects");
         var command = new RecreateStructureCommand();
         
-        var exitCode = await command.InvokeAsync(slnPath);
+        var parsed = command.Parse(slnPath);
+        var exitCode = await parsed.InvokeAsync();
         
         Assert.That(exitCode, Is.Zero);
     }
