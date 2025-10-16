@@ -1,6 +1,6 @@
 # A dotnet tool for moving project files into the directories specified by the solution (.sln) file
 
-[![NuGet Badge](https://buildstats.info/nuget/RecreateSolutionStructure)](https://www.nuget.org/packages/RecreateSolutionStructure/)
+[![NuGet Badge](https://img.shields.io/nuget/v/RecreateSolutionStructure)](https://www.nuget.org/packages/RecreateSolutionStructure/)
 [![codecov](https://codecov.io/gh/rosenbjerg/recreate-sln-structure/branch/main/graph/badge.svg)](https://codecov.io/gh/rosenbjerg/recreate-sln-structure)
 
 Useful for optimizing cache reuse in containerized .NET builds
