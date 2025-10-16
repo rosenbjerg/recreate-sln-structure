@@ -18,7 +18,7 @@ public class Tests
         
         var exitCode = await command.InvokeAsync(slnPath);
         
-        Assert.Zero(exitCode);
+        Assert.That(exitCode, Is.Zero);
     }
 
     [Test]
@@ -30,7 +30,7 @@ public class Tests
         
         var exitCode = await command.InvokeAsync(slnPath);
         
-        Assert.NotZero(exitCode);
+        Assert.That(exitCode, Is.Not.Zero);
     }
 
     [Test]
@@ -42,6 +42,6 @@ public class Tests
         
         var exitCode = await command.InvokeAsync(slnPath);
         
-        Assert.Zero(exitCode);
+        Assert.That(exitCode, Is.Zero);
     }
 }
