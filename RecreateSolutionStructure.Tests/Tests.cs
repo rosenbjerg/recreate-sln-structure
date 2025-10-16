@@ -1,4 +1,3 @@
-using System.CommandLine;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
@@ -15,10 +14,10 @@ public class Tests
         using var copy = TestDirectory.Create(FullSln);
         var slnPath = copy.GetFilePath("RecreateSolutionStructure.sln");
         var command = new RecreateStructureCommand();
-        
+
         var parsed = command.Parse(slnPath);
         var exitCode = await parsed.InvokeAsync();
-        
+
         Assert.That(exitCode, Is.Zero);
     }
 
@@ -28,10 +27,10 @@ public class Tests
         using var copy = TestDirectory.Create(MissingProjectSln);
         var slnPath = copy.GetFilePath("RecreateSolutionStructure.sln");
         var command = new RecreateStructureCommand();
-        
+
         var parsed = command.Parse(slnPath);
         var exitCode = await parsed.InvokeAsync();
-        
+
         Assert.That(exitCode, Is.Not.Zero);
     }
 
@@ -41,10 +40,10 @@ public class Tests
         using var copy = TestDirectory.Create(MissingProjectSln);
         var slnPath = copy.GetFilePath("RecreateSolutionStructure.sln --ignore-missing-projects");
         var command = new RecreateStructureCommand();
-        
+
         var parsed = command.Parse(slnPath);
         var exitCode = await parsed.InvokeAsync();
-        
+
         Assert.That(exitCode, Is.Zero);
     }
 }

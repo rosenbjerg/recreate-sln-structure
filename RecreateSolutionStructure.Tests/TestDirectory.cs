@@ -12,7 +12,15 @@ public sealed class TestDirectory : IDisposable
         _tempDirectory = tempDirectory;
     }
 
-    public string GetFilePath(string fileName) => Path.Combine(_tempDirectory, fileName);
+    public void Dispose()
+    {
+        if (Directory.Exists(_tempDirectory)) Directory.Delete(_tempDirectory, true);
+    }
+
+    public string GetFilePath(string fileName)
+    {
+        return Path.Combine(_tempDirectory, fileName);
+    }
 
     public static TestDirectory Create(string inputDirectory)
     {
@@ -26,13 +34,5 @@ public sealed class TestDirectory : IDisposable
         }
 
         return new TestDirectory(tempDirectory);
-    }
-
-    public void Dispose()
-    {
-        if (Directory.Exists(_tempDirectory))
-        {
-            Directory.Delete(_tempDirectory, true);
-        }
     }
 }

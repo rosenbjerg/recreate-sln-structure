@@ -1,5 +1,4 @@
-﻿using System.CommandLine;
-using RecreateSolutionStructure;
+﻿using RecreateSolutionStructure;
 
 var rootCommand = new RecreateStructureCommand();
 var parsed = rootCommand.Parse(args);
